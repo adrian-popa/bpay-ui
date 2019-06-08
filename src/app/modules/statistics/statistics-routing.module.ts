@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {StatisticsComponent} from './pages/statistics/statistics.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 const statisticsRoutes: Routes = [
   {path: '', component: StatisticsComponent}

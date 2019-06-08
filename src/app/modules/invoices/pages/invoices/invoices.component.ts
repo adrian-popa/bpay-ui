@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+
+import { Invoice } from '@models/invoice.model';
+
+import { getInvoices, InvoicesState } from '@store/reducers/invoices.reducer';
+
+import { Observable } from 'rxjs';
+import { GetInvoices } from '@store/actions/invoices.actions';
 
 @Component({
   selector: 'app-invoices',
@@ -7,9 +15,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvoicesComponent implements OnInit {
 
-  constructor() { }
+  invoices$: Observable<Invoice[]>;
+
+  constructor(private store: Store<InvoicesState>) { }
 
   ngOnInit() {
+    this.invoices$ = this.store.pipe(select(getInvoices));
+
+    this.getInvoices();
+  }
+
+  private getInvoices() {
+    this.store.dispatch(new GetInvoices());
   }
 
 }

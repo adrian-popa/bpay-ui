@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {InvoicesComponent} from './pages/invoices/invoices.component';
+import { InvoicesComponent } from './pages/invoices/invoices.component';
 
 const invoicesRoutes: Routes = [
   {path: '', component: InvoicesComponent}

@@ -1,3 +1,5 @@
-<p>
-  invoices works!
-</p>
+<div class="invoices-content">
+  <div *ngFor="let invoice of invoices$ | async" class="invoice">
+    <span>{{ invoice.payment.beneficiaryName }} | {{ invoice.payment.beneficiaryAddress }} | {{ invoice.payment.invoiceNumber }} | {{ invoice.payment.amount }} | {{ invoice.startDate }} - {{ invoice.endDate }}</span>
+  </div>
+</div>
