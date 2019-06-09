@@ -1,41 +1,40 @@
-<div class="filter-form">
-  <mat-form-field>
-    <mat-label>Select billed location</mat-label>
-    <mat-select [(value)]="selectedLocation" (selectionChange)="filterInvoices()">
-      <mat-option *ngFor="let location of locations" value="{{location}}">
-        {{location}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Select category</mat-label>
-    <mat-select [(value)]="selectedCategory" (selectionChange)="filterInvoices()">
-      <mat-option *ngFor="let category of categories" value="{{category}}">
-        {{category}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Select custom tag</mat-label>
-    <mat-select [(value)]="selectedCustom" (selectionChange)="filterInvoices()">
-      <mat-option *ngFor="let customTag of customTags" value="{{customTag}}">
-        {{customTag}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Select billing date</mat-label>
-    <input matInput placeholder="Choose a date" [satDatepicker]="picker" [value]="selectedDate" (dateChange)="updateSelectedDate($event)">
-    <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
-    <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
-  </mat-form-field>
-</div>
-
 <div class="invoices-content">
-  <div *ngFor="let invoice of invoicesToDisplay" class="invoice">
-    <span>{{ invoice.payment.beneficiaryName }} | {{ invoice.payment.beneficiaryAddress }} | {{ invoice.payment.invoiceNumber }} | {{ invoice.payment.amount }} | {{ invoice.startDate }} - {{ invoice.endDate }}</span>
+  <div class="filter-form">
+    <mat-form-field>
+      <mat-label>Select billed location</mat-label>
+      <mat-select [(value)]="selectedLocation" (selectionChange)="filterInvoices()">
+        <mat-option *ngFor="let location of locations" value="{{location}}">
+          {{location}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Select category</mat-label>
+      <mat-select [(value)]="selectedCategory" (selectionChange)="filterInvoices()">
+        <mat-option *ngFor="let category of categories" value="{{category}}">
+          {{category}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Select custom tag</mat-label>
+      <mat-select [(value)]="selectedCustom" (selectionChange)="filterInvoices()">
+        <mat-option *ngFor="let customTag of customTags" value="{{customTag}}">
+          {{customTag}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Select billing date</mat-label>
+      <input matInput placeholder="Choose a date" [satDatepicker]="picker" [value]="selectedDate" (dateChange)="updateSelectedDate($event)">
+      <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
+      <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+    </mat-form-field>
   </div>
+
+  <app-table [data]="invoices">
+  </app-table>
 </div>
