@@ -12,6 +12,8 @@ import { SharedModule } from '@shared/shared.module';
 import { InvoicesRoutingModule } from './invoices-routing.module';
 
 import { InvoicesComponent } from './pages/invoices/invoices.component';
+import {MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {SatDatepickerModule} from 'saturn-datepicker';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,11 @@ import { InvoicesComponent } from './pages/invoices/invoices.component';
     StoreModule.forFeature('invoices', invoicesReducer),
     EffectsModule.forFeature([InvoicesEffects]),
     SharedModule,
-    InvoicesRoutingModule
+    InvoicesRoutingModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    SatDatepickerModule,
+    MatInputModule
   ]
 })
 export class InvoicesModule { }
