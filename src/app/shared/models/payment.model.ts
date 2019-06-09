@@ -4,6 +4,7 @@ export class Payment {
   public beneficiaryIBAN: string;
   public beneficiaryName: string;
   public invoiceNumber: string;
+  public billedAddress: string;
   public payed: string;
 
   constructor(payment: any = {}) {
@@ -13,5 +14,6 @@ export class Payment {
     this.beneficiaryName = payment.beneficiaryName;
     this.invoiceNumber = payment.invoiceNumber;
     this.payed = payment.payed;
+    this.billedAddress = payment.billedAddress;
   }
 }

@@ -16,12 +16,18 @@ import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material';
+import {SatNativeDateModule} from 'saturn-datepicker';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     StoreModule.forRoot({}),
@@ -31,7 +37,8 @@ import { environment } from '../environments/environment';
       logOnly: environment.production,
     }),
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
