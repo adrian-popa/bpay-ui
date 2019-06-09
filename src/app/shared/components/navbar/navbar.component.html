@@ -1,3 +1,41 @@
-<p>
-  navbar works!
-</p>
+<div class="navbar-layout mat-elevation-z1">
+  <div class="left">
+    <span>{{title}}</span>
+  </div>
+  <div class="right">
+    <mat-icon [matBadge]="notifications.length.toString()"
+              matBadgePosition="above before after"
+              matBadgeColor="warn"
+              [matMenuTriggerFor]="menuNotifications">
+      notifications
+    </mat-icon>
+    <mat-menu #menuNotifications="matMenu">
+      <mat-list role="list" *ngFor="let notification of notifications;">
+        <mat-list-item role="listitem">
+          <span class="notification-message">
+            {{notification.message}}
+          </span>
+        </mat-list-item>
+      </mat-list>
+    </mat-menu>
+
+    <mat-icon [matMenuTriggerFor]="menuAccount">account_circle</mat-icon>
+    <mat-menu class="menu-account" #menuAccount="matMenu">
+      <mat-list role="list">
+        <mat-list-item [ngStyle]="{'font-weight':'bold'}" role="listitem" class="account-details">
+          Account details
+        </mat-list-item>
+
+        <mat-list-item role="listitem" class="name">
+          Name: Horhat Razvan
+        </mat-list-item>
+        <mat-list-item role="listitem" class="email">
+          Email: razvan99h@yahoo.com
+        </mat-list-item>
+        <mat-list-item role="listitem" class="company">
+          Company: BBU
+        </mat-list-item>
+      </mat-list>
+    </mat-menu>
+  </div>
+</div>
