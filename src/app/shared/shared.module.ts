@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
 
-import { MatIconModule } from '@angular/material';
+
 
 import { SidenavComponent } from '@components/sidenav/sidenav.component';
 import { NavbarComponent } from '@components/navbar/navbar.component';
@@ -13,7 +18,11 @@ import { NavbarComponent } from '@components/navbar/navbar.component';
   ],
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    MatBadgeModule,
+    MatTooltipModule,
+    MatMenuModule,
+    MatListModule
   ],
   exports: [
     SidenavComponent,
