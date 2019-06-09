@@ -5,8 +5,6 @@ import { Invoice } from '@models/invoice.model';
 
 import { getInvoices, InvoicesState } from '@store/reducers/invoices.reducer';
 
-import { GetInvoices } from '@store/actions/invoices.actions';
-
 import * as moment from 'moment';
 
 
@@ -46,17 +44,11 @@ export class InvoicesComponent implements OnInit {
       this.categories = ['None'];
       this.customTags = ['None'];
       this.invoices.forEach(invoice => {
-        this.locations.push(invoice.payment.beneficiaryAddress);
+        this.locations.push(invoice.payment.billedAddress);
         this.categories.push(invoice.metadata.category);
         invoice.metadata.custom.forEach(customTag => this.customTags.push(customTag));
       });
     });
-
-    this.getInvoices();
-  }
-
-  private getInvoices() {
-    this.store.dispatch(new GetInvoices());
   }
 
   private updateSelectedDate(date) {
@@ -69,7 +61,7 @@ export class InvoicesComponent implements OnInit {
 
     let invoicesCopy = this.invoices.slice();
     if (this.selectedLocation !== 'None') {
-      invoicesCopy = invoicesCopy.filter(invoice => invoice.payment.beneficiaryAddress === this.selectedLocation);
+      invoicesCopy = invoicesCopy.filter(invoice => invoice.payment.billedAddress === this.selectedLocation);
     }
     if (this.selectedCategory !== 'None') {
       invoicesCopy = invoicesCopy.filter(invoice => invoice.metadata.category === this.selectedCategory);

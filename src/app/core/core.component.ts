@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+
+import { Store } from '@ngrx/store';
+
+import { InvoicesState } from '@store/reducers/invoices.reducer';
+
+import { GetInvoices } from '@store/actions/invoices.actions';
 
 @Component({
   selector: 'app-core',
@@ -8,9 +14,14 @@ import {Router} from '@angular/router';
 })
 export class CoreComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private store: Store<InvoicesState>, private router: Router) { }
 
   ngOnInit() {
+    this.getInvoices();
+  }
+
+  private getInvoices() {
+    this.store.dispatch(new GetInvoices());
   }
 
   get pageTitle(): string {

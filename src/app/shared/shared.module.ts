@@ -3,11 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import {
   MatBadgeModule,
-  MatButtonModule, MatCardModule,
+  MatButtonModule,
+  MatCardModule,
   MatFormFieldModule,
   MatIconModule,
   MatListModule,
-  MatMenuModule, MatPaginatorModule, MatSortModule, MatTableModule,
+  MatMenuModule,
+  MatSelectModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatTableModule,
   MatTooltipModule
 } from '@angular/material';
 
@@ -33,12 +38,15 @@ import { TableComponent } from '@components/table/table.component';
     MatListModule,
     MatFormFieldModule,
     SatNativeDateModule,
+    MatSelectModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
     MatCardModule
   ],
   exports: [
+    MatSelectModule,
+    MatCardModule,
     SidenavComponent,
     NavbarComponent,
     TableComponent

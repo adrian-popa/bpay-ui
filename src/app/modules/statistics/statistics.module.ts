@@ -18,3 +18,4 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
   ]
 })
 export class StatisticsModule { }
+
