@@ -18,9 +18,6 @@ import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
 
-import {MatFormFieldModule} from '@angular/material';
-import {SatNativeDateModule} from 'saturn-datepicker';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -28,7 +25,6 @@ import {SatNativeDateModule} from 'saturn-datepicker';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     StoreModule.forRoot({}),
@@ -38,8 +34,7 @@ import {SatNativeDateModule} from 'saturn-datepicker';
       logOnly: environment.production,
     }),
     CoreModule,
-    AppRoutingModule,
-    SatNativeDateModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

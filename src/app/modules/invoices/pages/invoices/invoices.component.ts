@@ -26,7 +26,7 @@ export class InvoicesComponent implements OnInit {
   private selectedLocation: string;
   private selectedCategory: string;
   private selectedCustom: string;
-  private selectedDate = { begin: new Date(), end: new Date() };
+  private selectedDate = { begin: null, end: null };
 
   constructor(private store: Store<InvoicesState>) {
     this.invoices = [];
@@ -78,12 +78,14 @@ export class InvoicesComponent implements OnInit {
       invoicesCopy = invoicesCopy.filter(invoice => invoice.metadata.custom.indexOf(this.selectedCustom) !== -1);
     }
 
-    invoicesCopy = invoicesCopy.filter(invoice => {
-      const start = moment(invoice.startDate, 'DD.MM.YYYY');
-      const end = moment(invoice.endDate, 'DD.MM.YYYY');
+    if (this.selectedDate.begin !== null) {
+      invoicesCopy = invoicesCopy.filter(invoice => {
+        const start = moment(invoice.startDate, 'DD.MM.YYYY');
+        const end = moment(invoice.endDate, 'DD.MM.YYYY');
 
-      return this.selectedDate.begin <= start.toDate() && end.toDate() <= this.selectedDate.end;
-    });
+        return this.selectedDate.begin <= start.toDate() && end.toDate() <= this.selectedDate.end;
+      });
+    }
 
     this.invoicesToDisplay = invoicesCopy;
   }
