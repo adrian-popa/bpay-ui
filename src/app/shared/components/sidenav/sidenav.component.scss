@@ -43,6 +43,10 @@
       &:hover {
         background-color: #37474f;
       }
+
+      &.active {
+        color: #5fcd71;
+      }
     }
 
     .sidenav-settings {

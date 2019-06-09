@@ -18,4 +18,8 @@ export class SidenavComponent implements OnInit {
     this.router.navigate([route]);
   }
 
+  get activeRoute() {
+    return this.router.url;
+  }
+
 }
