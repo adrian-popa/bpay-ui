@@ -5,28 +5,30 @@ import { Invoice } from '@models/invoice.model';
 
 import { getInvoices, InvoicesState } from '@store/reducers/invoices.reducer';
 
-import { Observable } from 'rxjs';
 import { GetInvoices } from '@store/actions/invoices.actions';
-import {SatDatepickerRangeValue} from 'saturn-datepicker';
+
 import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-invoices',
   templateUrl: './invoices.component.html',
-  styleUrls: ['./invoices.component.scss']
+  styleUrls: ['./invoices.component.scss'],
 })
 export class InvoicesComponent implements OnInit {
 
-  invoices$: Observable<Invoice[]>;
-  private invoices: Invoice[];
-  private invoicesToDisplay: Invoice[];
-  private locations: string[];
-  private categories: string[];
-  private customTags: string[];
-  private selectedLocation: string;
-  private selectedCategory: string;
-  private selectedCustom: string;
-  private selectedDate = { begin: null, end: null };
+  invoices: Invoice[];
+  invoicesToDisplay: Invoice[];
+
+  selectedLocation: string;
+  selectedCategory: string;
+  selectedCustom: string;
+
+  locations: string[];
+  categories: string[];
+  customTags: string[];
+
+  selectedDate = { begin: null, end: null };
 
   constructor(private store: Store<InvoicesState>) {
     this.invoices = [];
@@ -37,16 +39,14 @@ export class InvoicesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.invoices$ = this.store.pipe(select(getInvoices));
-
-    this.invoices$.subscribe(invoices => {
+    this.store.pipe(select(getInvoices)).subscribe(invoices => {
       this.invoices = invoices;
       this.invoicesToDisplay = invoices;
       this.locations = ['None'];
       this.categories = ['None'];
       this.customTags = ['None'];
       this.invoices.forEach(invoice => {
-        this.locations.push(invoice.payment.billedAddress);
+        this.locations.push(invoice.payment.beneficiaryAddress);
         this.categories.push(invoice.metadata.category);
         invoice.metadata.custom.forEach(customTag => this.customTags.push(customTag));
       });
@@ -69,7 +69,7 @@ export class InvoicesComponent implements OnInit {
 
     let invoicesCopy = this.invoices.slice();
     if (this.selectedLocation !== 'None') {
-      invoicesCopy = invoicesCopy.filter(invoice => invoice.payment.billedAddress === this.selectedLocation);
+      invoicesCopy = invoicesCopy.filter(invoice => invoice.payment.beneficiaryAddress === this.selectedLocation);
     }
     if (this.selectedCategory !== 'None') {
       invoicesCopy = invoicesCopy.filter(invoice => invoice.metadata.category === this.selectedCategory);

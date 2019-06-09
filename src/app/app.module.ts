@@ -7,7 +7,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule  } from '@ngrx/effects';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { CoreModule } from '@core/core.module';

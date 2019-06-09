@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import {
   MatBadgeModule,
-  MatButtonModule,
+  MatButtonModule, MatCardModule,
   MatFormFieldModule,
   MatIconModule,
   MatListModule,
-  MatMenuModule,
+  MatMenuModule, MatPaginatorModule, MatSortModule, MatTableModule,
   MatTooltipModule
 } from '@angular/material';
 
@@ -15,11 +15,13 @@ import { SatNativeDateModule } from 'saturn-datepicker';
 
 import { SidenavComponent } from '@components/sidenav/sidenav.component';
 import { NavbarComponent } from '@components/navbar/navbar.component';
+import { TableComponent } from '@components/table/table.component';
 
 @NgModule({
   declarations: [
     SidenavComponent,
-    NavbarComponent
+    NavbarComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -30,11 +32,16 @@ import { NavbarComponent } from '@components/navbar/navbar.component';
     MatMenuModule,
     MatListModule,
     MatFormFieldModule,
-    SatNativeDateModule
+    SatNativeDateModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatCardModule
   ],
   exports: [
     SidenavComponent,
-    NavbarComponent
+    NavbarComponent,
+    TableComponent
   ]
 })
 export class SharedModule { }
