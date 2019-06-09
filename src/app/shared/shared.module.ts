@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import {
   MatBadgeModule,
   MatButtonModule,
+  MatCardModule,
   MatFormFieldModule,
   MatIconModule,
   MatListModule,
   MatMenuModule,
+  MatSelectModule,
   MatTooltipModule
 } from '@angular/material';
 
@@ -30,11 +32,15 @@ import { NavbarComponent } from '@components/navbar/navbar.component';
     MatMenuModule,
     MatListModule,
     MatFormFieldModule,
-    SatNativeDateModule
+    SatNativeDateModule,
+    MatSelectModule,
+    MatCardModule
   ],
   exports: [
     SidenavComponent,
-    NavbarComponent
+    NavbarComponent,
+    MatSelectModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }

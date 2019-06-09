@@ -6,8 +6,7 @@ import { Invoice } from '@models/invoice.model';
 import { getInvoices, InvoicesState } from '@store/reducers/invoices.reducer';
 
 import { Observable } from 'rxjs';
-import { GetInvoices } from '@store/actions/invoices.actions';
-import {SatDatepickerRangeValue} from 'saturn-datepicker';
+
 import * as moment from 'moment';
 
 @Component({
@@ -51,12 +50,6 @@ export class InvoicesComponent implements OnInit {
         invoice.metadata.custom.forEach(customTag => this.customTags.push(customTag));
       });
     });
-
-    this.getInvoices();
-  }
-
-  private getInvoices() {
-    this.store.dispatch(new GetInvoices());
   }
 
   private updateSelectedDate(date) {
