@@ -33,7 +33,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.data && this.data) {
       this.data = this.data.map(invoice => {
-        if (moment(invoice.endDate, 'DD.MM.YYY').toDate() < (new Date())) {
+        if (moment(invoice.endDate, 'DD.MM.YYYY').toDate() < (new Date())) {
           invoice.priority = 2;
         } else {
           if (!invoice.metadata.trusted) {
