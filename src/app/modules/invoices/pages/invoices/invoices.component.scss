@@ -1,0 +1,15 @@
+:host {
+
+  .invoices-content {
+    height: 100%;
+
+    .filter-form {
+      display: grid;
+      grid-template-rows: auto;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 24px;
+      justify-content: space-between;
+      padding: 0 8px;
+    }
+  }
+}

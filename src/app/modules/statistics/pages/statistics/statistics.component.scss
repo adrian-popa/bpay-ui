@@ -1,0 +1,25 @@
+.charts {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: 'left right';
+
+  .left {
+    grid-area: left;
+    display: block;
+    margin: 0 8px;
+  }
+  .right {
+    grid-area: right;
+    display: block;
+    margin: 0 8px;
+  }
+  .center {
+    display: block;
+    margin: 0 10vw;
+  }
+
+  p{
+    text-align: center;
+  }
+}

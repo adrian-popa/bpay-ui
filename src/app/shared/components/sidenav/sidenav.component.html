@@ -1,0 +1,27 @@
+<div class="sidenav-container">
+  <div class="sidenav-logo-container">
+    <img srcset="assets/images/bpay-logo.png 436w,
+                 assets/images/bpay-logo@2x.png 874w,
+                 assets/images/bpay-logo@3x.png 1312w"
+         src="assets/images/bpay-logo@3x.png 1312w" alt="BPay logo"
+         class="sidenav-logo"
+         (click)="onNavigateTo('/invoices')">
+  </div>
+  <h5 class="sidenav-management">Management</h5>
+  <div class="sidenav-invoices"
+       [class.active]="activeRoute === '/invoices'"
+       (click)="onNavigateTo('/invoices')">
+    <mat-icon class="icon">list_alt</mat-icon>
+    <span class="label">Invoices</span>
+  </div>
+  <div class="sidenav-statistics"
+       [class.active]="activeRoute === '/statistics'"
+       (click)="onNavigateTo('/statistics')">
+    <mat-icon class="icon">bar_chart</mat-icon>
+    <span class="label">Statistics</span>
+  </div>
+  <div class="sidenav-settings">
+    <mat-icon class="icon">settings</mat-icon>
+    <span class="label">Settings</span>
+  </div>
+</div>

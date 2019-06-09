@@ -1,0 +1,28 @@
+<div class="charts">
+
+  <mat-card class="right">
+    <p class="centerParagraph">Category spending, by locations</p>
+    <mat-form-field class="center">
+      <mat-label>Choose Locations</mat-label>
+      <mat-select [(value)]="selectedLocation" (selectionChange)="filterByLocation()">
+        <mat-option >None</mat-option>
+        <mat-option *ngFor="let location of locations" [value]=location>{{location}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <canvas #canvasCategories></canvas>
+  </mat-card>
+
+  <mat-card class="left">
+    <p class="centerParagraph">Location spending, by categories</p>
+    <mat-form-field  class="center">
+      <mat-label >Choose Categories</mat-label>
+      <mat-select [(value)]="selectedCategory" (selectionChange)="filterByCategory()">
+        <mat-option >None</mat-option>
+        <mat-option *ngFor="let category of categories" [value]=category>{{category}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <canvas #canvasLocations></canvas>
+  </mat-card>
+
+
+</div>
