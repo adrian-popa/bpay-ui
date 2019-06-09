@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import '~saturn-datepicker/theming';
 
@@ -12,4 +11,11 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   margin: 0;
+}
+
+.mat-list-base .mat-list-item {
+  height: 32px !important;
+}
+.mat-list-base .mat-list-item {
+  font-size: 12px;
 }

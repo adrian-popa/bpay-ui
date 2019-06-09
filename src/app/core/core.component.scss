@@ -8,23 +8,16 @@
     grid-template-areas: 'sidenav navbar'
                          'sidenav core';
 
-    & > * {
-      border: 1px solid red;
-    }
-
     .sidenav {
       grid-area: sidenav;
-      padding: 0 24px;
     }
 
     .navbar {
       grid-area: navbar;
-      padding: 0 24px;
     }
 
     .core-content {
       grid-area: core;
-      background-color: #f3f3f3;
       padding: 24px;
     }
   }
