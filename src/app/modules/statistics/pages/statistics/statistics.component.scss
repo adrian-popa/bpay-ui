@@ -1,7 +1,7 @@
 .charts {
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas: 'left right';
 
   .left {

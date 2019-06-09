@@ -36,9 +36,9 @@ export class StatisticsComponent implements OnInit {
     this.chartLocations = this.createPieChart(this.canvasLocations, [], []);
     this.chartCategories = this.createPieChart(this.canvasCategories, [], []);
     this.chartLocations.canvas.parentNode.style.height = '428px';
-    this.chartLocations.canvas.parentNode.style.width = '428px';
+    this.chartLocations.canvas.parentNode.style.width = '600px';
     this.chartCategories.canvas.parentNode.style.height = '428px';
-    this.chartCategories.canvas.parentNode.style.width = '428px';
+    this.chartCategories.canvas.parentNode.style.width = '600px';
 
     this.invoices$ = this.store.pipe(select(getInvoices));
 
