@@ -5,27 +5,28 @@ import { Invoice } from '@models/invoice.model';
 
 import { getInvoices, InvoicesState } from '@store/reducers/invoices.reducer';
 
-import { Observable } from 'rxjs';
-
 import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-invoices',
   templateUrl: './invoices.component.html',
-  styleUrls: ['./invoices.component.scss']
+  styleUrls: ['./invoices.component.scss'],
 })
 export class InvoicesComponent implements OnInit {
 
-  invoices$: Observable<Invoice[]>;
-  private invoices: Invoice[];
-  private invoicesToDisplay: Invoice[];
-  private locations: string[];
-  private categories: string[];
-  private customTags: string[];
-  private selectedLocation: string;
-  private selectedCategory: string;
-  private selectedCustom: string;
-  private selectedDate = { begin: null, end: null };
+  invoices: Invoice[];
+  invoicesToDisplay: Invoice[];
+
+  selectedLocation: string;
+  selectedCategory: string;
+  selectedCustom: string;
+
+  locations: string[];
+  categories: string[];
+  customTags: string[];
+
+  selectedDate = { begin: null, end: null };
 
   constructor(private store: Store<InvoicesState>) {
     this.invoices = [];
@@ -36,9 +37,7 @@ export class InvoicesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.invoices$ = this.store.pipe(select(getInvoices));
-
-    this.invoices$.subscribe(invoices => {
+    this.store.pipe(select(getInvoices)).subscribe(invoices => {
       this.invoices = invoices;
       this.invoicesToDisplay = invoices;
       this.locations = ['None'];

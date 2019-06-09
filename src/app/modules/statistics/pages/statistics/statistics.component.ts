@@ -102,7 +102,6 @@ export class StatisticsComponent implements OnInit {
   }
 
   private filterByCategory() {
-    console.log(this.selectedCategory);
     let invoicesCopy = this.invoices.slice();
     if (this.selectedCategory !== undefined) {
       invoicesCopy = invoicesCopy.filter(invoice => invoice.metadata.category === this.selectedCategory);
