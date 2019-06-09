@@ -1,0 +1,55 @@
+:host {
+
+  .sidenav-container {
+    height: 100%;
+    position: relative;
+    color: #ffffff;
+    background-color: #262f3d;
+
+    .sidenav-logo-container {
+      width: 100%;
+      border-bottom: 1px solid #37474f;
+      cursor: pointer;
+    }
+
+    .sidenav-logo {
+      width: auto;
+      height: 64px;
+      padding: 16px 24px 12px;
+    }
+
+    .sidenav-management {
+      font-size: 20px;
+      padding: 0 24px;
+      margin: 16px 0;
+    }
+
+    .sidenav-invoices, .sidenav-statistics, .sidenav-settings {
+      height: 48px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 48px;
+      padding: 0 24px;
+      cursor: pointer;
+
+      .icon {
+        vertical-align: middle;
+      }
+
+      .label {
+        padding-left: 16px;
+      }
+
+      &:hover {
+        background-color: #37474f;
+      }
+    }
+
+    .sidenav-settings {
+      width: calc(100% - 48px);
+      position: absolute;
+      left: 0;
+      bottom: 8px;
+    }
+  }
+}

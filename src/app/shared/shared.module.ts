@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MatIconModule } from '@angular/material';
+
 import { SidenavComponent } from '@components/sidenav/sidenav.component';
 import { NavbarComponent } from '@components/navbar/navbar.component';
 
@@ -10,7 +12,8 @@ import { NavbarComponent } from '@components/navbar/navbar.component';
     NavbarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule
   ],
   exports: [
     SidenavComponent,
