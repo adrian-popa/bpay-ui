@@ -21,19 +21,23 @@
 
     <mat-icon [matMenuTriggerFor]="menuAccount">account_circle</mat-icon>
     <mat-menu class="menu-account" #menuAccount="matMenu">
-      <mat-list role="list">
-        <mat-list-item [ngStyle]="{'font-weight':'bold'}" role="listitem" class="account-details">
+      <mat-list>
+        <mat-list-item [ngStyle]="{'font-weight':'bold'}" class="account-details">
           Account details
         </mat-list-item>
 
-        <mat-list-item role="listitem" class="name">
+        <mat-list-item class="name">
           Name: Horhat Razvan
         </mat-list-item>
-        <mat-list-item role="listitem" class="email">
+        <mat-list-item class="email">
           Email: razvan99h@yahoo.com
         </mat-list-item>
-        <mat-list-item role="listitem" class="company">
+        <mat-list-item class="company">
           Company: BBU
+        </mat-list-item>
+        <mat-list-item class="logout">
+          <button mat-raised-button
+                  color="warn">Logout</button>
         </mat-list-item>
       </mat-list>
     </mat-menu>

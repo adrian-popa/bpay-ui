@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatIconModule } from '@angular/material/icon';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatListModule } from '@angular/material/list';
-import { MatFormFieldModule } from '@angular/material';
+import {
+  MatBadgeModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatListModule,
+  MatMenuModule,
+  MatTooltipModule
+} from '@angular/material';
 
 import { SatNativeDateModule } from 'saturn-datepicker';
 
@@ -20,6 +23,7 @@ import { NavbarComponent } from '@components/navbar/navbar.component';
   ],
   imports: [
     CommonModule,
+    MatButtonModule,
     MatIconModule,
     MatBadgeModule,
     MatTooltipModule,
