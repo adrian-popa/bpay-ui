@@ -38,7 +38,7 @@
           <td mat-cell *matCellDef="let invoice" >
             <div [ngSwitch]="invoice.priority">
               <button mat-raised-button color="accent" *ngSwitchCase="1">Review</button>
-              <button mat-raised-button color="primary" *ngSwitchDefault>Pay</button>
+              <button mat-raised-button [color]="invoice.priority === 0 ? 'primary' : 'warn'" *ngSwitchDefault>Pay</button>
             </div>
           </td>
         </ng-container>

@@ -10,8 +10,8 @@ export class NavbarComponent implements OnInit {
   @Input() title: string;
 
    notifications = [
-     {id: 1, message: 'Unusual activity found on invoice number 253.'},
-     {id: 2, message: 'Invoice number 433 is due in two days.'},
+     {id: 1, message: 'Unusual activity found on invoice number TKASDKF124312.'},
+     {id: 2, message: 'Invoice number SADF18318 is due in two days.'},
    ];
 
   constructor() { }

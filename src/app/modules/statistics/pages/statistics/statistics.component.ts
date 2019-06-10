@@ -7,8 +7,6 @@ import { Invoice } from '@models/invoice.model';
 
 import { Chart } from 'chart.js';
 
-import {Observable} from 'rxjs';
-
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
@@ -18,45 +16,17 @@ export class StatisticsComponent implements OnInit {
 
   @ViewChild('canvasLocations', {static : true}) canvasLocations;
   @ViewChild('canvasCategories', {static : true}) canvasCategories;
+
+  invoices: Invoice[];
+  locations: Set<string>;
+  categories: Set<string>;
+
   chartLocations;
   chartCategories;
   selectedLocation;
   selectedCategory;
-  invoices$: Observable<Invoice[]>;
-  private invoices: Invoice[];
-  private invoicesToDisplay: Invoice[];
-  private locations: string[];
-  private categories: string[];
-  constructor(private store: Store<InvoicesState>) {
-    this.invoices = [];
-    this.invoicesToDisplay = [];
-  }
 
-  ngOnInit() {
-    this.chartLocations = this.createPieChart(this.canvasLocations, [], []);
-    this.chartCategories = this.createPieChart(this.canvasCategories, [], []);
-    this.chartLocations.canvas.parentNode.style.height = '428px';
-    this.chartLocations.canvas.parentNode.style.width = '600px';
-    this.chartCategories.canvas.parentNode.style.height = '428px';
-    this.chartCategories.canvas.parentNode.style.width = '600px';
-
-    this.invoices$ = this.store.pipe(select(getInvoices));
-
-    this.invoices$.subscribe(invoices => {
-      this.invoices = invoices;
-      this.invoicesToDisplay = invoices;
-      this.locations = [];
-      this.categories = [];
-      this.invoices.forEach(invoice => {
-        this.locations.push(invoice.payment.billedAddress);
-        this.categories.push(invoice.metadata.category);
-      });
-      this.filterByCategory();
-      this.filterByLocation();
-    });
-  }
-
-  private createPieChart(canvas, chartLabels, chartData) {
+  private static createPieChart(canvas, chartLabels, chartData) {
     return new Chart(canvas.nativeElement, {
       type: 'pie',
       data: {
@@ -93,6 +63,31 @@ export class StatisticsComponent implements OnInit {
     });
   }
 
+  constructor(private store: Store<InvoicesState>) {
+    this.invoices = [];
+  }
+
+  ngOnInit() {
+    this.chartLocations = StatisticsComponent.createPieChart(this.canvasLocations, [], []);
+    this.chartCategories = StatisticsComponent.createPieChart(this.canvasCategories, [], []);
+    this.chartLocations.canvas.parentNode.style.height = '428px';
+    this.chartLocations.canvas.parentNode.style.width = '600px';
+    this.chartCategories.canvas.parentNode.style.height = '428px';
+    this.chartCategories.canvas.parentNode.style.width = '600px';
+
+    this.store.pipe(select(getInvoices)).subscribe(invoices => {
+      this.invoices = invoices;
+      this.locations = new Set();
+      this.categories = new Set();
+      this.invoices.forEach(invoice => {
+        this.locations.add(invoice.payment.billedAddress);
+        this.categories.add(invoice.metadata.category);
+      });
+      this.filterByCategory();
+      this.filterByLocation();
+    });
+  }
+
   private updatePieChart(chart, newChartLabels, newChartData) {
     chart.data.labels = newChartLabels;
     chart.data.datasets.forEach((dataset) => {
@@ -101,15 +96,15 @@ export class StatisticsComponent implements OnInit {
     chart.update();
   }
 
-  private filterByCategory() {
+  filterByCategory() {
     let invoicesCopy = this.invoices.slice();
     if (this.selectedCategory !== undefined) {
       invoicesCopy = invoicesCopy.filter(invoice => invoice.metadata.category === this.selectedCategory);
     }
 
-    const chartLabels = this.locations;
+    const chartLabels = Array.from<string>(this.locations);
     const chartData = [];
-    chartLabels.forEach((location) => {
+    chartLabels.forEach(() => {
       chartData.push(0);
     });
     invoicesCopy.forEach((invoice) => {
@@ -122,16 +117,16 @@ export class StatisticsComponent implements OnInit {
     this.updatePieChart(this.chartLocations, chartLabels, chartData);
   }
 
-  private filterByLocation() {
+  filterByLocation() {
     console.log(this.selectedLocation);
     let invoicesCopy = this.invoices.slice();
-    if (this.selectedCategory !== undefined) {
+    if (this.selectedLocation !== undefined) {
       invoicesCopy = invoicesCopy.filter(invoice => invoice.payment.billedAddress === this.selectedLocation);
     }
 
-    const chartLabels = this.categories;
+    const chartLabels = Array.from<string>(this.categories);
     const chartData = [];
-    chartLabels.forEach((location) => {
+    chartLabels.forEach(() => {
       chartData.push(0);
     });
     invoicesCopy.forEach((invoice) => {

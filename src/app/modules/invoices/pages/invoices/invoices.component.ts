@@ -22,8 +22,8 @@ export class InvoicesComponent implements OnInit {
   selectedCategory: string;
   selectedCustom: string;
 
-  locations: string[];
-  categories: string[];
+  locations: Set<string>;
+  categories: Set<string>;
   customTags: string[];
 
   selectedDate = { begin: null, end: null };
@@ -40,23 +40,23 @@ export class InvoicesComponent implements OnInit {
     this.store.pipe(select(getInvoices)).subscribe(invoices => {
       this.invoices = invoices;
       this.invoicesToDisplay = invoices;
-      this.locations = ['None'];
-      this.categories = ['None'];
+      this.locations = new Set(['None']);
+      this.categories = new Set(['None']);
       this.customTags = ['None'];
       this.invoices.forEach(invoice => {
-        this.locations.push(invoice.payment.billedAddress);
-        this.categories.push(invoice.metadata.category);
+        this.locations.add(invoice.payment.billedAddress);
+        this.categories.add(invoice.metadata.category);
         invoice.metadata.custom.forEach(customTag => this.customTags.push(customTag));
       });
     });
   }
 
-  private updateSelectedDate(date) {
+  updateSelectedDate(date) {
     this.selectedDate = date.value;
     this.filterInvoices();
   }
 
-  private filterInvoices() {
+  filterInvoices() {
     console.log(this.selectedDate);
 
     let invoicesCopy = this.invoices.slice();
